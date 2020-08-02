@@ -222,3 +222,26 @@ Repare que foi gerado 19 e se usarmos o mesmo seed será gerado o mesmo número:
 19
 ```
 Repare que a biblioteca random é bem previsível e por isso se chama pseudo-random!
+
+## Arredondamento python2 e python3
+
+Nos exercícios, perguntamos como arredondar valores. Olhando nas funções built-in do Python, encontramos a função round, por exemplo:
+``` py
+>>> round(3.5)
+4
+```
+O interessante é que a função round também mudou entre Python 2 e Python 3!
+
+Por exemplo, executando round(3.5) no Python 3 dará o valor 4 (tipo inteiro), e com Python 2 dará o valor 4.0 (tipo decimal).
+
+![round](imagens/round-int-float.png)  
+
+Ou seja, o Python 3 sempre devolve um valor do tipo int, enquanto o Python 2 devolve o tipo float.
+
+Além disso, arredondando o valor 4.5 com Python 2, dará o valor 5.0 e no Python 3 dará o valor 4! Veja a imagem abaixo comparando Python 2 com Python 3:
+
+![round](imagens/round-python2-python3.png)  
+
+O Python 3 usa uma forma de arredondar, que também é chamado de Banker's rounding e sempre arredonda para o próximo valor par.
+
+Mais informações se encontram na documentação do Python 3: https://docs.python.org/3.5/library/functions.html#round

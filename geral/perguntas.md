@@ -792,3 +792,79 @@ De acordo com seus conhecimentos de Python, analise o código acima e avalie se 
 
 > A verdade é que o sorteio não foi justo pois a Tamires realmente tinha mais chance de ganhar! A função random.randrange nos retorna um número no intervalo especificado. Nesse exemplo, temos como saída os possíveis valores 0, 1, 2 e 3. Como o Paulo está associado ao valor 1 e a Juliana ao valor 2, sobram mais dois possíveis valores para a Tamires poder ganhar ( 0 ou 3 ).
 > Quando estamos trabalhando com números aleatórios, é importante observar bem o resultado das nossas funções e como se comporta nosso código, além de entender sobre aleatoriedade. Neste caso o sorteio era apenas de um livro, porém em sistemas de verdade pode ser que o efeito de um sorteio indesejado possa beneficiar acidentalmente uma certa pessoa ou até mesmo [causar prejuízos à sua empresa](https://www.engadget.com/2010-12-29-hackers-obtain-ps3-private-cryptography-key-due-to-epic-programm.html).
+
+## Aula 7
+
+1 - Já vimos algumas funções built-in nesse curso!
+O que sabemos sobre essas funções built-in? Assinale a afirmação correta!
+
+- Fazem parte da biblioteca padrão do Python, mas não podem ser chamadas em qualquer lugar.
+- Fazem parte da biblioteca padrão do Python, mas precisam ser importadas.
+- __Estão automaticamente disponíveis e podem ser chamadas em todo lugar do nosso código.__
+- São apenas as funções: print(..) type(..), abs(), input(..) e int.
+
+> As funções built-in podem ser chamadas a qualquer momento, em todos os lugares. Exemplo de funções são type(..), abs(), input(..) ou int.
+> Segue também o link da documentação (em inglês): https://docs.python.org/3/library/functions.html
+
+2 - Vimos no vídeo como calcular a pontuação do jogador. O cálculo foi simples e usamos a função abs():
+``` py
+pontos_perdidos = abs(chute - numero_secreto)   #pontos perdidos da rodada
+pontos = pontos - pontos_perdidos               #subtraindo os pontos perdidos da pontuação total 
+```
+Vamos mudar um pouco esse cálculo dos pontos perdidos. Agora não basta apenas calcular o valor absoluto, devemos também dividir esse valor por 3.
+``` py
+pontos_perdidos = abs(chute - numero_secreto) / 3     #dividindo por três
+```
+Nada complicado aqui, mas pode surgir uma outra questão. Imagine que o chute é 21 e o número secreto é 32. Isso daria a seguinte conta:
+``` py
+pontos_perdidos = abs(21 - 32) / 3     #dividindo por três
+```
+Que é:
+``` py
+pontos_perdidos = 11 / 3
+```
+Será que o Python consegue dividir 11 por 3? Se sim, qual será o tipo da variável pontos_perdidos? Faça o teste!
+
+- Não consegue e dá erro.
+- Consegue sim e o tipo será int.
+- Consegue sim e o tipo será number.
+- __Consegue sim e o tipo será float.__
+
+> Você pode testar isso facilmente no console do Python3:
+> ``` py
+> >>> pontos_perdidos = 11 / 3
+> >>> type(pontos_perdidos)
+> <class 'float'>
+> ```
+> Agora temos um outro problema. Ao imprimir esse cálculo, percebemos muitas casas decimais:
+> ``` py
+> >>> print(pontos_perdidos)
+> 3.6666666666666665
+> ```
+> Bom, já aprendemos a formatar números decimais (lembre-se do {:7.2f}), mas nesse caso não é uma questão de formatação! Gostaríamos de arredondar o número, ou seja o valor decimal 3.66666 deve ser transformado para o valor 4.
+> Será que você se lembra da função built-in para o arredondamento?
+
+3 - Nos exercícios falamos sobre a divisão entre dois inteiros. Para ilustrar, execute no console:
+``` py
+>>>  3 / 2
+1.5
+```
+Repare que recebemos o valor float 1.5 como resposta. O operador / sempre traz um float, mesmo se não for necessário, por isso ele também é chamado de float division:
+``` py
+>>>  2 / 2
+1.0
+```
+No entanto, existe um outro operador bem parecido, o //. Tente executar:
+``` py
+>>>  3 // 2
+```
+Qual foi o resultado?
+
+- __1__
+- 2
+- 1.5
+
+> O resultado é 1, um valor inteiro (int).
+> O operador // também é chamado integer division e sempre devolve o valor inteiro (sem arredondar).
+> Para realmente concluir o tópico, saiba que o Python 2 só tem integer division, mesmo tendo os dois operadores / e // ! No Python 2 não existe diferença entre os dois operadores, veja o exemplo:
+> ![operadores-divisao](imagens/operadores-divisao.png)
