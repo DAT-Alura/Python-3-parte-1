@@ -66,3 +66,17 @@ O resultado nos surpreende:
 Não deu erro e sim imprimiu 10 vezes 20! Mas eu não acabei de falar que o Python é rígido e não converte automaticamente?
 
 Falei e na verdade não aconteceu uma conversão automática/implícita. Trata-se apenas de um syntax sugar do mundo Python. Um syntax sugar, açúcar sintático da linguagem, apenas simplifica algo que seria trabalhoso, mas não muda a característica da linguagem. Então, ao invés de escrever dez vezes o número 20, podemos simplificar e escrever 10 * "20". Tudo bem?
+
+## if sem ou com parêntesis?
+
+No vídeo usamos o if com parênteses, por exemplo:
+``` py
+if(acertou):
+    print("Parabéns! Você acertou.")
+```
+Você também vai encontrar a forma sem parênteses, pois o Python aceita ambas as formas:
+``` py
+if acertou:
+    print("Parabéns! Você acertou.")
+```
+No curso sempre seguimos a forma que usa parênteses, pois deixa mais claro qual é a condição, principalmente quando há várias condições a avaliar através das operações lógicas AND ou OR. Veremos mais para frente um exemplo concreto com as operações lógicas!

@@ -249,3 +249,118 @@ O resultado da operação é:
 - __No Python 2, quando digitamos um valor numérico através de input, ele automaticamente converte de str para int. Já o Python 3 não assume essa conversão automática, sendo o desenvolvedor responsável por fazê-la.__
 - __A função raw_input só existe em Python 2 e quando usada, lê a entrada como str, sem realizar conversões de tipos, como na função input.__
 - __Uma função em Python 3 sempre deve possuir parênteses.__
+
+## Aula 3
+
+1 - Considere o programa abaixo:
+
+``` py
+idade_str = input("Digite sua idade: ")
+idade = int(idade_str)
+
+if (idade > 18):
+    print("Você é maior de idade.")
+else:
+    if (idade < 12):
+        print("Você é uma criança.")
+    elif (idade > 12):
+        print("Você é um adolescente.")
+```
+Quando o usuário digitar 12, o que será mostrado no console?
+- O programa não irá rodar.
+- Será impresso Você é um adolescente.
+- __Nada.__
+- Será impresso Você é maior de idade.
+- Será impresso Você é uma criança.
+
+> Quando o usuário digitar 12, nenhuma condição será satisfeita! Repare que:
+> 
+> - 12 não é maior que 18 (idade > 18).
+> - 12 não é menor que 12 (idade < 12).
+> - 12 não é maior que 12 (idade > 12).
+> 
+> É preciso testar a igualdade através do ==.
+> 
+> Saiba também, que além do == (igualdade), > (maior) e < (menor), também temos >= (maior ou igual), <= (menor ou > igual) e != (diferente).
+> 
+> Seguem todas as operadores de comparação:
+> 
+> - < - menor que
+> - \> - maior que
+> - <= - menor ou igual a
+> - \>= - maior ou igual a
+> - == - igual a
+> - != - diferente de
+
+2 - Considere o programa abaixo:
+``` py
+idade_str = input("Digite sua idade: ")
+idade = int(idade_str)
+
+maior_idade = idade > 18
+crianca     = idade < 12
+adolescente = idade > 12
+```
+Quando o usuário digitar 15, o valor das variáveis maior_idade, crianca e adolescente será, respectivamente:
+- True, True, False
+- __False, False, True__
+- True, False, False
+- False, False, False
+- 0, 0, 1
+
+> Para a idade = 15:
+> 
+> - maior_idade: 15 > 18 (False)
+> - crianca: 15 < 12 (False)
+> - adolescente: 15 > 12 (True)
+
+3 - Henrique, mesmo dando os primeiros passos com a linguagem Python, decidiu criar um sistema de identificação de usuários. É claro que em uma aplicação real é necessário acessar o banco de dados, entre outras coisas, mas usando o que ele já aprendeu, ele conseguiu algo parecido. Esse é o código do aluno:
+``` py
+usuario = input("Informe o usuário do sistema!")
+
+if(usuario == "Flávio"):
+    print("Seja bem-vindo Flávio!")
+else(usuario == "Douglas"):
+    print("Seja bem-vindo Douglas!")
+else(usuario == "Nico"):
+    print("Seja bem-vindo Nico")
+else:
+    print("Usuário não identificado!")
+```
+A ideia de Henrique é simples, porém não muito eficiente. Ele quer aceitar apenas os usuários Flávio, Douglas e Nico. No entanto, seu código não funciona!
+
+Consegue identificar a razão? Quebre a cabeça um pouquinho.
+
+- __Existem 2 "else" que de deveriam ser "elif"__
+
+> O problema é que a instrução else não aceita receber uma condição. Nesse caso, para resolver o problema do código, precisamos trocar para a instrução elif:
+> ``` py
+> usuario = input("Informe o usuário do sistema!")
+> 
+> if(usuario == "Flávio"):
+>     print("Seja bem-vindo Flávio!")
+> elif(usuario == "Douglas"):
+>     print("Seja bem-vindo Douglas!")
+> elif(usuario == "Nico"):
+>     print("Seja bem-vindo Nico")
+> else:
+>     print("Usuário não identificado!")
+> ```
+> Veja que deixamos apenas um else que não recebe qualquer condição. Também tem que ser assim, porque se o usuário identificado não for nenhum dos que listamos, imprimimos na tela "Usuário não identificado".
+
+4 - No exercício, você usou a variável acertou:
+``` py
+acertou = (chute == numero_secreto)
+```
+Qual é o tipo dessa variável? Faça o teste!
+- bytes
+- int
+- __bool__
+- str
+
+> A variável acertou é do tipo bool.
+> Uma variável do tipo bool pode ter apenas dois valores, True ou False, que podemos usar diretamente:
+> ``` py
+> passou = True
+> errou = False
+> ```
