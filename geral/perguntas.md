@@ -868,3 +868,148 @@ Qual foi o resultado?
 > O operador // também é chamado integer division e sempre devolve o valor inteiro (sem arredondar).
 > Para realmente concluir o tópico, saiba que o Python 2 só tem integer division, mesmo tendo os dois operadores / e // ! No Python 2 não existe diferença entre os dois operadores, veja o exemplo:
 > ![operadores-divisao](imagens/operadores-divisao.png)
+
+## Aula 8
+
+1 - Marlon criou dois arquivos chamados a.py e b.py. Segue conteúdo de cada um:
+``` py
+# arquivo a.py
+print('executando a')
+```
+``` py
+# arquivo b.py
+print('executando b')
+```
+Ele ainda criou um terceiro arquivo chamado principal.py. Para testar se aprendeu corretamente a importar um módulo criado por ele mesmo, ele fez o seguinte em principal.py
+``` py
+# principal.py
+
+import a
+import b
+```
+O que acontecerá quando Marlon executar através do terminal o programa principal.py?
+
+- __A__
+Será exibido os textos:
+``` py
+executando a
+executando b
+```
+
+- B
+Será exibido apenas
+``` py
+executando b
+```
+
+- C
+Nada será exibido
+
+- D
+Será exibido apenas
+``` py
+executando a
+```
+
+> Quando importamos um módulo em Python, a primeira coisa que a nossa linguagem favorita fará é executar o conteúdo de cada módulo importado.
+
+2 - Fernanda, assim como seu amigo Marlon, criou dois arquivos chamados a.py e b.py. Segue o conteúdo de cada um:
+``` py
+# arquivo a.py
+def executa():
+    print("Executando a")
+```
+``` py
+# arquivo b.py
+def executa():
+    print("Executando b")
+```
+Ela criou também aquele terceiro arquivo chamado principal.py. Para testar se aprendeu corretamente a importar um módulo criado por ela mesmo, ela fez o seguinte em principal.py
+``` py
+# principal.py
+
+import a
+import b
+```
+Agora qual é a saída ao executar o arquivo principal.py?
+
+- A
+Um erro acontecerá.
+
+- B
+Será exibido os textos:
+``` py
+executando a
+executando b
+```
+
+- __C__
+Nada será exibido.
+
+> Como os códigos dos arquivo a.py e b.by foram definidos dentro de uma função, sendo assim, a importação de a e b por principal não executa automaticamente o código contido neles. Para isso, precisamos explicitar que queremos executar esses código em principal. Vejamos:
+> ``` py
+> # principal.py
+> 
+> import a
+> import b
+> 
+> a.executa()
+> b.executa()
+> ```
+
+3 - Kellen criou o seguinte módulo no arquivo a.py:
+``` py
+# arquivo a.py
+def executa():
+    print("Executando a")
+```
+Aprendemos a importar um módulo, inclusive a chamar uma função específica desse módulo. No entanto, Kellen deseja usar a.py independente de outros módulos, ou seja, quer ser capaz de chamá-lo através do console, como:
+``` py
+python a.py
+```
+Qual das opções abaixo possui a modificação correta de a.py para que seja possível chamar o arquivo diretamente do terminal?
+
+- A
+``` py
+def executa():
+    print("Executando a")
+
+if(__name__ = "__main__"):
+    executa()
+```
+
+- B
+``` py
+def executa():
+    print("Executando a")
+
+if(__name__ == "_main_"):
+    executa()
+```
+
+- __C__
+``` py
+def executa():
+    print("Executando a")
+
+if(__name__ == "__main__"):
+    executa()
+```
+
+- D
+``` py
+def executa():
+    print("Executando a")
+
+if(_name_ == "__main__"):
+    executa()
+```
+
+> Mesmo um módulo solitário pode executar alguma funcionalidade quando executado isoladamente, basta adicionar um if no final do código para verificar a variável __name__:
+> ``` py
+> def executa():
+>     print("Executando a")
+> 
+> if(__name__ == "__main__"):
+>     executa()
+> ```
