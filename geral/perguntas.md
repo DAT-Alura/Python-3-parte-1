@@ -364,3 +364,91 @@ Qual é o tipo dessa variável? Faça o teste!
 > passou = True
 > errou = False
 > ```
+
+## Aula 4
+
+1 - Temos o seguinte código:
+``` py
+contador = 1
+while(contador <= 10):
+    print(contador)
+    contador = contador + 2
+    if(contador == 5):
+        contador = contador + 2
+```
+Apenas olhando este código, sem executá-lo, qual será a saída no console?
+- A
+``` bash
+1
+3
+5
+7
+9
+```
+
+- B
+``` bash
+1
+2
+3
+4
+6
+7
+8
+9
+```
+
+- C
+``` bash
+1
+3
+7
+9
+11
+```
+
+- __D__
+``` bash
+1
+3
+7
+9
+```
+
+> Se você achou que o 5 seria impresso, errou. Isto porque no if(contador == 5), adicionamos novamente 2 ao contador.
+
+2 - O que o if e while tem em comum?
+- __Ambos possuem uma condição de entrada.__
+- Ambos servem para testar uma condição e executar um bloco uma única vez.
+- Ambos possuem uma condição de saída.
+- Ambos servem para testar uma condição e executar um bloco enquanto a condição for verdadeira.
+
+> Ambos, if e while, possuem uma condição de entrada. A diferença é que o if executa o bloco apenas uma vez, mas o while repete o bloco enquanto a condição for verdadeira.
+> O interessante é que o Python não possui um laço com uma condição de saída, que outras linguagens chamam de do-while.
+
+3 - Veja a declaração das 4 variáveis:
+``` py
+dia_ini = 24
+dia_fim = 28
+mes = "fevereiro"
+ano = 2017
+```
+Pedro precisa criar a seguinte string:
+
+```"Em 2017 o Carnaval acontece em fevereiro do dia 24 até o dia 28"```
+
+Qual é a formatação correta para produzir a string acima?
+- A
+```"Em [] o Carnaval acontece em [] do dia [] até o dia []".format(ano, mes, dia_ini, dia_fim)```
+- B
+```"Em {} o Carnaval acontece em {} do dia {} até o dia {}"```
+- __C__
+```"Em {} o Carnaval acontece em {} do dia {} até o dia {}".format(ano, mes, dia_ini, dia_fim)```
+- D
+```"Em {ano} o Carnaval acontece em {mes} do dia {dia_ini} até o dia {dia_fim}".format()```
+
+> Dentro da string, devemos utilizar as chaves ({}) para definir onde o valor da variável deve ser inserido. E logo após a definição da string, chamamos a função format, que recebe as variáveis/parâmetros na ordem de inserção:
+> ``` py
+> "Em {} o Carnaval acontece em {} do dia {} até o dia {}".format(ano, mes, dia_ini, dia_fim)
+> ```
+> No próximo capítulo veremos mais detalhes sobre essa formatação, que também é chamada de interpolação.
