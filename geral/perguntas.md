@@ -452,3 +452,268 @@ Qual é a formatação correta para produzir a string acima?
 > "Em {} o Carnaval acontece em {} do dia {} até o dia {}".format(ano, mes, dia_ini, dia_fim)
 > ```
 > No próximo capítulo veremos mais detalhes sobre essa formatação, que também é chamada de interpolação.
+
+## Aula 5
+
+1 - Temos o seguinte loop usando while:
+``` py
+contador = 1
+while(contador <= 10):
+    print(contador)
+    contador = contador + 1
+```
+Qual das opções abaixo possui o mesmo resultado usando for .. range?
+- A
+``` py
+for contador in range(1, 10):
+    print(contador)
+```
+
+- __B__
+``` py
+for contador in range(1, 11):
+    print(contador)
+```
+
+- C
+``` py
+for contador range in(1, 11):
+    print(contador)
+```
+
+> Muito cuidado com o for .. range. A posição final é não-inclusiva, por isso que para imprimirmos de 1 até 10, usamos 11 como posição final:
+> ``` py
+> for contador in range(1, 11):
+>     print(contador)
+> ```
+
+2 - Temos o seguinte código:
+``` py
+contador = 1
+while(contador <= 10):
+    print(contador)
+    contador = contador + 3
+```
+Que imprime:
+``` bash
+1
+4
+7
+10
+```
+Como você poderia substituir o código acima usando o laço for .. range?
+- __A__
+``` py
+for contador in range(1, 11, 3):
+    print(contador)
+```
+> Correto! Utilizando o range com um step 3.
+
+- B
+``` py
+for contador in range(1, 11):
+    print(contador)
+```
+
+- C
+``` py
+for contador in range(1, 11, 4):
+    print(contador)
+```
+
+- D
+``` py
+for contador in (1, 11, 3):
+    print(contador)
+```
+
+> A função range possui os seguintes parâmetros:
+> ``` py
+> range(start, stop, [step])
+> ```
+> Onde o step é opcional. Como queremos "pular" de 3 em 3, começando com 1 (start) até 10 (stop), podemos escrever:
+> ``` py
+> for contador in range(1, 11, 3):
+>     print(contador)
+> ```
+
+3 - Dentro de um laço, qual é a diferença entre break e continue?
+- continue sai do bloco do laço abruptamente, break apenas pula para próxima iteração.
+- break é utilizado no laço for, continue no laço while.
+- __break sai do bloco do laço abruptamente, continue apenas pula para próxima iteração.__
+- Não tem diferença entre break e continue, ambos pulam para próxima iteração.
+
+> Para controlar melhor os laços, existem os comandos break e continue, que são utilizados dentro de um laço (for ou while). Ambos fazem parte do controle de fluxo (control flow).
+> A diferença é que o break, quando for executado, sai do bloco do laço abruptamente, enquanto continue apenas pula para próxima iteração.
+
+4 - Temos o seguinte código:
+``` py
+i = 1
+while(i <= 7):
+    print(i)
+    i = i + 1
+    if(i == 5):
+        break
+```
+Apenas olhando esse código, sem executá-lo, qual será a saída no console?
+- A
+``` bash
+1
+2
+3
+4
+5
+```
+
+- B
+``` bash
+1
+2
+3
+4
+5
+6
+7
+```
+
+- __C__
+``` bash
+1
+2
+3
+4
+```
+
+> A saída será:
+> ``` bash
+> 1
+> 2
+> 3
+> 4
+> ```
+> Se você achou que o 5 seria impresso, errou. Isso porque a condição if, que executa o break (que rompe o laço da iteração), é executada após o incremento da variável i, sendo assim, quando o valor dela for 5, paramos a repetição antes que o programa tenha chance de imprimir o valor 5.
+
+5 - E se fosse o código abaixo usando for e continue?
+``` py
+for i in range(1,8):
+    if(i == 5):
+        continue
+    print(i)
+```
+Qual será a saída no console?
+- A
+``` bash
+1
+2
+3
+4
+6
+7
+```
+> Correto! Pulamos apenas a iteração 5.
+
+- B
+``` bash
+1
+2
+3
+4
+```
+
+- C
+``` bash
+1
+2
+3
+4
+5
+6
+7
+```
+
+> Pulamos apenas a iteração 5. A saída será:
+> ``` bash
+> 1
+> 2
+> 3
+> 4
+> 6
+> 7
+> ```
+
+6 - Um desenvolvedor Python está tendo que adaptar um sistema americano de cadastro de clientes americanos para os clientes brasileiros. Ele está esbarrando em um problema, pois lá as pessoas têm o costume de se referir pelo sobrenome antes do primeiro nome, por exemplo: Smith, John .
+
+Ele deseja adaptar as mensagens do sistema para o padrão brasileiro, mas sem alterar a estrutura de dados que ele recebe do banco de dados.
+
+Digamos que ele queira exibir a seguinte mensagem: "Ola Sr. Leonardo Cordeiro", como ele pode formatar a string para obter o resultado desejado?
+- A
+``` py
+print("Ola Sr.{-1} {1}".format("Cordeiro","Leonardo"))
+```
+- B
+``` py
+print("Ola Sr.{2} {1}".format("Cordeiro","Leonardo"))
+```
+- __C__
+``` py
+print("Ola Sr.{1} {0}".format("Cordeiro","Leonardo"))
+```
+- D
+``` py
+print("Ola Sr.{0} {1}".format("Cordeiro","Leonardo"))
+```
+
+> Com o .format(), podemos especificar a ordem em que os parâmetros aparecem na string, basta apenas colocar entre as chaves ({}) da string formatada qual parâmetro você quer exibir. É válido lembrar também, que o primeiro parâmetro é o zero, pois tradicionalmente na computação começamos contando de zero, ou seja, no nosso caso:
+> ``` py
+> print("Ola Sr.{1} {0}".format("Cordeiro","Leonardo"))
+> ```
+> O primeiro parâmetro, representado pelo 0** é Cordeiro, e o segundo, que é o **1, é o Leonardo. Assim, formatando a string, na hora de imprimir será exibido:
+> ``` bash
+> "Ola Sr. Leonardo Cordeiro"
+> ```
+
+7 - Temos as seguintes instruções:
+``` py
+"R$ {:7.1f}".format(1000.12)
+"R$ {:07.2f}".format(4.11)
+```
+Será impresso respectivamente no console:
+- A
+``` bash
+R$ 1000.1
+R$ 0004.11
+```
+
+- B
+``` bash
+R$ 1000.12
+R$    4.1
+```
+
+- C
+``` bash
+R$ 1000.12
+R$ 0004.11
+```
+
+> A resposta correta é:
+> ``` bash
+> R$  1000.1
+> R$ 0004.11
+> ```
+> Vejamos:
+> ``` py
+> "R$ {:7.1f}".format(1000.12)
+> ```
+> No exemplo acima, queremos um número com 7 casas inteiras, sendo uma delas decimal, resultado é R$ 1000.1
+> ``` py
+> "R$ {:07.2f}".format(4.11)
+> ```
+> Neste exemplo, queremos um número com 7 casas inteiras, sendo duas delas decimais, resultado é R$ 0004.11. Como colocamos um número de casas inteiras superior a quantidade de casas inteiras do número, o Python coloca 0 (zeros) à esquerda. Interessante também é que a função format até arredonda, por exemplo:
+> ``` py
+> "R$ {:7.1f}".format(1000.16)
+> ```
+> Retorna:
+> ``` bash
+> R$  1000.2
+> ```
